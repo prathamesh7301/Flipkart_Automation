@@ -97,7 +97,9 @@ public class Flipkart {
 	    @Test(priority = 3, dependsOnMethods = "clickLoginButton")
 	    public void mobileNumber() {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(addMobileNumber)).sendKeys("9359659351");
+	        
+	        // Please add your mobile number in sendkeys
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(addMobileNumber)).sendKeys("add your Mobile Number");
 	    }
 
 	    @Test(priority = 4, dependsOnMethods = "mobileNumber")
