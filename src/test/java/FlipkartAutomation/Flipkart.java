@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -99,7 +100,7 @@ public class Flipkart {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	        
 	        // Please add your mobile number in sendkeys
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(addMobileNumber)).sendKeys("add your Mobile Number");
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(addMobileNumber)).sendKeys("   ");
 	    }
 
 	    @Test(priority = 4, dependsOnMethods = "mobileNumber")
@@ -147,56 +148,101 @@ public class Flipkart {
 	            throw e;
 	        }
 
-	        try {
-	            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, '_1AtVbE')]")));
-	            System.out.println("Search results loaded.");
-	        } catch (TimeoutException e) {
-	            System.out.println("Search results did not load in time.");
-	        }
+//	        try {
+//	            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, '_1AtVbE')]")));
+//	            System.out.println("Search results loaded.");
+//	        } catch (TimeoutException e) {
+//	            System.out.println("Search results did not load in time.");
+//	        }
 	    }
 
 	    @Test(priority = 7, dependsOnMethods = "SearchProduct")
 	    public void fetchProductDetails() {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, '_1AtVbE')]")));
+	        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='yKfJKb row']")));
 
-	        List<WebElement> products = driver.findElements(By.xpath("//div[contains(@class, '_1AtVbE') and .//div[contains(@class, '_4rR01T')]]"));
-
+	        List<WebElement> products = driver.findElements(By.xpath("//div[@class='yKfJKb row']"));
 	        System.out.println("---- Flipkart Mobile Products ----");
 
 	        int count = 0;
+
 	        for (WebElement product : products) {
 	            try {
-	                WebElement nameElement = product.findElement(By.xpath(".//div[contains(@class, '_4rR01T')]"));
-	                String name = nameElement.getText();
-
-	                WebElement priceElement = product.findElement(By.xpath(".//div[contains(@class, '_30jeq3')]"));
-	                String price = priceElement.getText();
+	                String name = product.findElement(By.className("KzDlHZ")).getText();
+	                String price = product.findElement(By.className("Nx9bqj")).getText();
 
 	                String rating = "N/A";
 	                try {
-	                    WebElement ratingElement = product.findElement(By.xpath(".//div[contains(@class, '_3LWZlK')]"));
-	                    rating = ratingElement.getText();
+	                    rating = product.findElement(By.className("XQDdHH")).getText();
 	                } catch (Exception e) {
-	                    // Rating not available
+	                    // rating not found
 	                }
 
 	                count++;
 	                System.out.println(count + ". " + name + " | Price: " + price + " | Rating: " + rating);
 
 	            } catch (Exception e) {
-	                System.out.println("Error fetching product details");
+	                System.out.println("Error fetching details for a product.");
 	            }
 	        }
 
 	        if (count == 0) {
-	            System.out.println("No product details found. Flipkart may have changed the page layout.");
+	            System.out.println("No products found. Flipkart may have updated their structure again.");
 	        }
 	    }
 	    
+	    @Test(priority = 8, dependsOnMethods = "fetchProductDetails")
+	    public void ClickProduct() {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	        try {
+	            // Store the main window handle
+	            String mainWindow = driver.getWindowHandle();
+
+	            // Wait for the product elements to load
+	            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='yKfJKb row']")));
+
+	            List<WebElement> products = driver.findElements(By.xpath("//div[@class='yKfJKb row']"));
+
+	            if (products.size() >= 2) {
+	                WebElement secondProduct = products.get(1);
+
+	                // Click the second product
+	                secondProduct.click();
+	                System.out.println("Clicked on the 2nd product.");
+
+	                // Wait for new window/tab to open
+	                Thread.sleep(3000); // Short wait to allow new window to open
+
+	                // Get all window handles
+	                Set<String> allWindows = driver.getWindowHandles();
+
+	                for (String window : allWindows) {
+	                    if (!window.equals(mainWindow)) {
+	                        driver.switchTo().window(window);
+	                        System.out.println("Switched to new window.");
+	                        System.out.println("New Window Title: " + driver.getTitle());
+	                        System.out.println("New Window URL: " + driver.getCurrentUrl());
+	                        break;
+	                    }
+	                }
+
+	                // Optional: close the new tab and switch back
+	                // driver.close();
+	                // driver.switchTo().window(mainWindow);
+
+	            } else {
+	                System.out.println("Less than 2 products found. Cannot click the 2nd product.");
+	            }
+	        } catch (Exception e) {
+	            System.out.println("An error occurred while clicking the 2nd product: " + e.getMessage());
+	        }
+	    }
 	    
-  @AfterTest
+/*  @AfterTest
   public void afterTest() {
-  }
+	  
+	  driver.quit();
+  } */
 
 }
