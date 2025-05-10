@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="9" passed="4" failed="0" skipped="5">
+<testng-results ignored="0" total="10" passed="5" failed="0" skipped="5">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-09T22:44:21 IST" name="Default suite" finished-at="2025-05-09T22:45:45 IST" duration-ms="83725">
+  <suite started-at="2025-05-10T23:38:02 IST" name="Default suite" finished-at="2025-05-10T23:39:39 IST" duration-ms="96367">
     <groups>
     </groups>
-    <test started-at="2025-05-09T22:44:21 IST" name="Default test" finished-at="2025-05-09T22:45:45 IST" duration-ms="83725">
+    <test started-at="2025-05-10T23:38:02 IST" name="Default test" finished-at="2025-05-10T23:39:39 IST" duration-ms="96367">
       <class name="FlipkartAutomation.Flipkart">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:44:21 IST" name="beforeTest" finished-at="2025-05-09T22:45:04 IST" duration-ms="42450" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:38:02 IST" name="beforeTest" finished-at="2025-05-10T23:38:47 IST" duration-ms="44503" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="openFlipkart()[pri:0, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:04 IST" name="openFlipkart" finished-at="2025-05-09T22:45:17 IST" duration-ms="12918" status="PASS">
+        <test-method signature="openFlipkart()[pri:0, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:38:47 IST" name="openFlipkart" finished-at="2025-05-10T23:39:02 IST" duration-ms="14723" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openFlipkart -->
-        <test-method signature="checkIfLoggedIn()[pri:1, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:17 IST" name="checkIfLoggedIn" finished-at="2025-05-09T22:45:22 IST" depends-on-methods="FlipkartAutomation.Flipkart.openFlipkart" duration-ms="5351" status="SKIP">
+        <test-method signature="checkIfLoggedIn()[pri:1, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:02 IST" name="checkIfLoggedIn" finished-at="2025-05-10T23:39:07 IST" depends-on-methods="FlipkartAutomation.Flipkart.openFlipkart" duration-ms="5240" status="SKIP">
           <exception class="org.testng.SkipException">
             <message>
               <![CDATA[Already logged in. Skipping login tests.]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.testng.SkipException: Already logged in. Skipping login tests.
-at FlipkartAutomation.Flipkart.checkIfLoggedIn(Flipkart.java:87)
+at FlipkartAutomation.Flipkart.checkIfLoggedIn(Flipkart.java:93)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -55,15 +55,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkIfLoggedIn -->
-        <test-method signature="clickLoginButton()[pri:2, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:22 IST" name="clickLoginButton" finished-at="2025-05-09T22:45:22 IST" depends-on-methods="FlipkartAutomation.Flipkart.checkIfLoggedIn" duration-ms="1" status="SKIP">
+        <test-method signature="clickLoginButton()[pri:2, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:07 IST" name="clickLoginButton" finished-at="2025-05-10T23:39:07 IST" depends-on-methods="FlipkartAutomation.Flipkart.checkIfLoggedIn" duration-ms="1" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.checkIfLoggedIn() on instance FlipkartAutomation.Flipkart@4c39bec8]]]>
+              <![CDATA[Method FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.checkIfLoggedIn() on instance FlipkartAutomation.Flipkart@f79e]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.checkIfLoggedIn() on instance FlipkartAutomation.Flipkart@4c39bec8]
+              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.checkIfLoggedIn() on instance FlipkartAutomation.Flipkart@f79e]
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -89,15 +89,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickLoginButton -->
-        <test-method signature="mobileNumber()[pri:3, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:22 IST" name="mobileNumber" finished-at="2025-05-09T22:45:22 IST" depends-on-methods="FlipkartAutomation.Flipkart.clickLoginButton" duration-ms="2" status="SKIP">
+        <test-method signature="mobileNumber()[pri:3, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:07 IST" name="mobileNumber" finished-at="2025-05-10T23:39:07 IST" depends-on-methods="FlipkartAutomation.Flipkart.clickLoginButton" duration-ms="1" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@4c39bec8]]]>
+              <![CDATA[Method FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@f79e]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@4c39bec8]
+              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.clickLoginButton() on instance FlipkartAutomation.Flipkart@f79e]
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -123,15 +123,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mobileNumber -->
-        <test-method signature="requestOTPbtn()[pri:4, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:22 IST" name="requestOTPbtn" finished-at="2025-05-09T22:45:22 IST" depends-on-methods="FlipkartAutomation.Flipkart.mobileNumber" duration-ms="3" status="SKIP">
+        <test-method signature="requestOTPbtn()[pri:4, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:07 IST" name="requestOTPbtn" finished-at="2025-05-10T23:39:07 IST" depends-on-methods="FlipkartAutomation.Flipkart.mobileNumber" duration-ms="1" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@4c39bec8]]]>
+              <![CDATA[Method FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@f79e]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@4c39bec8]
+              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.mobileNumber() on instance FlipkartAutomation.Flipkart@f79e]
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -157,15 +157,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- requestOTPbtn -->
-        <test-method signature="waitForManualOTPAndClickVerify()[pri:5, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:22 IST" name="waitForManualOTPAndClickVerify" finished-at="2025-05-09T22:45:22 IST" depends-on-methods="FlipkartAutomation.Flipkart.requestOTPbtn" duration-ms="0" status="SKIP">
+        <test-method signature="waitForManualOTPAndClickVerify()[pri:5, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:07 IST" name="waitForManualOTPAndClickVerify" finished-at="2025-05-10T23:39:07 IST" depends-on-methods="FlipkartAutomation.Flipkart.requestOTPbtn" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method FlipkartAutomation.Flipkart.waitForManualOTPAndClickVerify() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@4c39bec8]]]>
+              <![CDATA[Method FlipkartAutomation.Flipkart.waitForManualOTPAndClickVerify() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@f79e]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.waitForManualOTPAndClickVerify() on instance FlipkartAutomation.Flipkart@4c39bec8 depends on not successfully finished methods 
-[FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@4c39bec8]
+              <![CDATA[java.lang.Throwable: Method FlipkartAutomation.Flipkart.waitForManualOTPAndClickVerify() on instance FlipkartAutomation.Flipkart@f79e depends on not successfully finished methods 
+[FlipkartAutomation.Flipkart.requestOTPbtn() on instance FlipkartAutomation.Flipkart@f79e]
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
@@ -191,22 +191,22 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- waitForManualOTPAndClickVerify -->
-        <test-method signature="SearchProduct()[pri:6, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:23 IST" name="SearchProduct" finished-at="2025-05-09T22:45:38 IST" duration-ms="15471" status="PASS">
+        <test-method signature="SearchProduct()[pri:6, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:07 IST" name="SearchProduct" finished-at="2025-05-10T23:39:23 IST" duration-ms="15443" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SearchProduct -->
-        <test-method signature="fetchProductDetails()[pri:7, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:38 IST" name="fetchProductDetails" finished-at="2025-05-09T22:45:45 IST" depends-on-methods="FlipkartAutomation.Flipkart.SearchProduct" duration-ms="6592" status="PASS">
+        <test-method signature="fetchProductDetails()[pri:7, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:23 IST" name="fetchProductDetails" finished-at="2025-05-10T23:39:34 IST" depends-on-methods="FlipkartAutomation.Flipkart.SearchProduct" duration-ms="11158" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fetchProductDetails -->
-        <test-method signature="ClickProduct()[pri:8, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:45 IST" name="ClickProduct" finished-at="2025-05-09T22:45:45 IST" depends-on-methods="FlipkartAutomation.Flipkart.fetchProductDetails" duration-ms="418" status="PASS">
+        <test-method signature="ClickProduct()[pri:8, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:34 IST" name="ClickProduct" finished-at="2025-05-10T23:39:37 IST" depends-on-methods="FlipkartAutomation.Flipkart.fetchProductDetails" duration-ms="3483" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ClickProduct -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:FlipkartAutomation.Flipkart@4c39bec8]" started-at="2025-05-09T22:45:45 IST" name="afterTest" finished-at="2025-05-09T22:45:45 IST" duration-ms="2" status="PASS">
+        <test-method signature="Cart()[pri:9, instance:FlipkartAutomation.Flipkart@f79e]" started-at="2025-05-10T23:39:37 IST" name="Cart" finished-at="2025-05-10T23:39:39 IST" duration-ms="1110" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterTest -->
+        </test-method> <!-- Cart -->
       </class> <!-- FlipkartAutomation.Flipkart -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

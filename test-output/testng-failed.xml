@@ -5,14 +5,13 @@
     <classes>
       <class name="FlipkartAutomation.Flipkart">
         <methods>
-          <include name="afterTest"/>
           <include name="beforeTest"/>
           <include name="waitForManualOTPAndClickVerify"/>
           <include name="clickLoginButton"/>
-          <include name="checkIfLoggedIn"/>
           <include name="openFlipkart"/>
-          <include name="requestOTPbtn"/>
+          <include name="checkIfLoggedIn"/>
           <include name="mobileNumber"/>
+          <include name="requestOTPbtn"/>
         </methods>
       </class> <!-- FlipkartAutomation.Flipkart -->
     </classes>

@@ -1,6 +1,7 @@
 package FlipkartAutomation;
 
 import org.testng.annotations.Test;
+
 import org.testng.annotations.BeforeTest;
 
 import java.io.File;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,6 +40,9 @@ public class Flipkart {
 
 	    //Locator of Search Bar  
 	    By SearchBar = By.xpath("//input[@title='Search for Products, Brands and More']");
+	    
+	    //Locator to Add product in cart
+	    By AddCart = By.xpath("//button[contains(@class, 'vslbG+') and contains(text(), 'Add to cart')]");
 	    
 	    
 	    @BeforeTest
@@ -128,7 +133,8 @@ public class Flipkart {
 	    @Test(priority = 6)
 	    public void SearchProduct() throws InterruptedException {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
+	        
+	        // Close the Login Popup if appear on Homepage
 	        try {
 	            WebElement closePopup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'✕')]")));
 	            closePopup.click();
@@ -166,23 +172,30 @@ public class Flipkart {
 
 	        int count = 0;
 
-	        for (WebElement product : products) {
+	        for (int i = 0; i < products.size(); i++) {
 	            try {
-	                String name = product.findElement(By.className("KzDlHZ")).getText();
-	                String price = product.findElement(By.className("Nx9bqj")).getText();
+	                // Re-fetch the element fresh from the DOM to avoid stale reference
+	                WebElement product = driver.findElements(By.xpath("//div[@class='yKfJKb row']")).get(i);
+
+	                String name = "N/A";
+	                List<WebElement> nameEl = product.findElements(By.className("KzDlHZ"));
+	                if (!nameEl.isEmpty()) name = nameEl.get(0).getText();
+
+	                String price = "N/A";
+	                List<WebElement> priceEl = product.findElements(By.className("Nx9bqj"));
+	                if (!priceEl.isEmpty()) price = priceEl.get(0).getText();
 
 	                String rating = "N/A";
-	                try {
-	                    rating = product.findElement(By.className("XQDdHH")).getText();
-	                } catch (Exception e) {
-	                    // rating not found
-	                }
+	                List<WebElement> ratingEl = product.findElements(By.className("XQDdHH"));
+	                if (!ratingEl.isEmpty()) rating = ratingEl.get(0).getText();
 
 	                count++;
 	                System.out.println(count + ". " + name + " | Price: " + price + " | Rating: " + rating);
 
+	            } catch (StaleElementReferenceException staleEx) {
+	                System.out.println("Stale element detected, skipping product.");
 	            } catch (Exception e) {
-	                System.out.println("Error fetching details for a product.");
+	                System.out.println("Error fetching details for a product: " + e.getMessage());
 	            }
 	        }
 
@@ -190,6 +203,7 @@ public class Flipkart {
 	            System.out.println("No products found. Flipkart may have updated their structure again.");
 	        }
 	    }
+
 	    
 	    @Test(priority = 8, dependsOnMethods = "fetchProductDetails")
 	    public void ClickProduct() {
@@ -225,11 +239,8 @@ public class Flipkart {
 	                        System.out.println("New Window URL: " + driver.getCurrentUrl());
 	                        break;
 	                    }
-	                }
+ 	                }
 
-	                // Optional: close the new tab and switch back
-	                // driver.close();
-	                // driver.switchTo().window(mainWindow);
 
 	            } else {
 	                System.out.println("Less than 2 products found. Cannot click the 2nd product.");
@@ -237,6 +248,18 @@ public class Flipkart {
 	        } catch (Exception e) {
 	            System.out.println("An error occurred while clicking the 2nd product: " + e.getMessage());
 	        }
+	    }
+	    
+	    @Test (priority = 9)
+	    public void Cart() {
+	    	WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
+	    	try {
+	    		wait.until(ExpectedConditions.elementToBeClickable(AddCart)).click();
+	    		System.out.println("Product added in Cart");
+			} catch (Exception e) {
+				System.out.println("Error whiile adding product in Cart" +e.getMessage());
+			}
+	    	
 	    }
 	    
 /*  @AfterTest
